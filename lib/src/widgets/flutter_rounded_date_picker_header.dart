@@ -3,18 +3,7 @@ import 'package:flutter_rounded_date_picker/src/era_mode.dart';
 import 'package:flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
 
 class FlutterRoundedDatePickerHeader extends StatelessWidget {
-  const FlutterRoundedDatePickerHeader(
-      {Key key,
-        @required this.selectedDate,
-        @required this.mode,
-        @required this.onModeChanged,
-        @required this.orientation,
-        this.era,
-        this.borderRadius,
-        this.imageHeader,
-        this.description = "",
-        this.fontFamily,
-        this.style})
+  const FlutterRoundedDatePickerHeader({Key key, @required this.selectedDate, @required this.mode, @required this.onModeChanged, @required this.orientation, this.era, this.borderRadius, this.imageHeader, this.description = "", this.fontFamily, this.style})
       : assert(selectedDate != null),
         assert(mode != null),
         assert(orientation != null),
@@ -103,7 +92,7 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
       child: _DateHeaderButton(
         color: Colors.transparent,
         onTap: Feedback.wrapForTap(
-              () => _handleChangeMode(DatePickerMode.year),
+          () => _handleChangeMode(DatePickerMode.year),
           context,
         ),
         child: Semantics(
@@ -122,7 +111,7 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
       child: _DateHeaderButton(
         color: Colors.transparent,
         onTap: Feedback.wrapForTap(
-              () => _handleChangeMode(DatePickerMode.day),
+          () => _handleChangeMode(DatePickerMode.day),
           context,
         ),
         child: Semantics(
@@ -159,6 +148,7 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Text('Select Date'),
           yearButton,
           dayButton,
           const SizedBox(height: 4.0),
@@ -181,7 +171,6 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
     );
   }
 }
-
 
 class _DateHeaderButton extends StatelessWidget {
   const _DateHeaderButton({
@@ -215,4 +204,3 @@ class _DateHeaderButton extends StatelessWidget {
     );
   }
 }
-
