@@ -41,6 +41,7 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
     final TextTheme headerTextTheme = themeData.primaryTextTheme;
     Color dayColor;
     Color yearColor;
+    Color selectDateColor = Color(0xFFFFFFFF);
     switch (themeData.primaryColorBrightness) {
       case Brightness.light:
         dayColor = mode == DatePickerMode.day ? Colors.black87 : Colors.black54;
@@ -62,6 +63,7 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
 
     final TextStyle dayStyle = style?.textStyleDayButton ?? headerTextTheme.display1.copyWith(color: dayColor, fontFamily: fontFamily);
     final TextStyle yearStyle = style?.textStyleYearButton ?? headerTextTheme.subhead.copyWith(color: yearColor, fontFamily: fontFamily);
+    final TextStyle selectDateStyle = style?.selectDateText ?? headerTextTheme.subhead.copyWith(color: yearColor, fontFamily: fontFamily);
 
     Color backgroundColor;
     switch (themeData.brightness) {
@@ -85,6 +87,15 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
         mainAxisAlignment = MainAxisAlignment.start;
         break;
     }
+
+    final Widget selectDateText = _DateHeaderButton(
+      color: Colors.transparent,
+      onTap: () {},
+      child: Text(
+        "Select Date",
+        style: selectDateStyle,
+      ),
+    );
 
     final Widget yearButton = IgnorePointer(
       ignoring: mode != DatePickerMode.day,
@@ -148,10 +159,12 @@ class FlutterRoundedDatePickerHeader extends StatelessWidget {
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Select Date'),
+          selectDateText,
+          const SizedBox(height: 10.0),
           yearButton,
+          const SizedBox(height: 14.0),
           dayButton,
-          const SizedBox(height: 4.0),
+          // const SizedBox(height: 2.0),
           Visibility(
             visible: description.isNotEmpty,
             child: Padding(

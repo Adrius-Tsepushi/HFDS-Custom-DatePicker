@@ -316,6 +316,7 @@ class FlutterRoundedDayPicker extends StatelessWidget {
               );
           decoration = style?.decorationDateSelected ??
               BoxDecoration(
+                // color: Colors.red,
                 color: themeData.accentColor,
                 shape: BoxShape.circle,
               );
@@ -340,6 +341,7 @@ class FlutterRoundedDayPicker extends StatelessWidget {
 
         dayWidget = dayWidget ??
             Container(
+              // height: 10,
               decoration: decoration,
               child: Center(
                 child: Semantics(
@@ -367,12 +369,11 @@ class FlutterRoundedDayPicker extends StatelessWidget {
           onTap: () {
             bool allow = true;
 
-            if(disabled){
+            if (disabled) {
               allow = false;
-            }
-            else if((dayToBuild.isAtSameMomentAs(firstDate) || dayToBuild.isAfter(firstDate)) && (dayToBuild.isAtSameMomentAs(lastDate) || dayToBuild.isBefore(lastDate))){
+            } else if ((dayToBuild.isAtSameMomentAs(firstDate) || dayToBuild.isAfter(firstDate)) && (dayToBuild.isAtSameMomentAs(lastDate) || dayToBuild.isBefore(lastDate))) {
               allow = true;
-            }else{
+            } else {
               allow = false;
             }
 
@@ -409,14 +410,19 @@ class FlutterRoundedDayPicker extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
+            height: 50,
             decoration: BoxDecoration(
-                color: style?.backgroundHeaderMonth, borderRadius: orientation == Orientation.landscape ? BorderRadius.only(topRight: Radius.circular(borderRadius)) : null),
+              color: style?.backgroundHeaderMonth,
+              // color: Colors.red
+              borderRadius: orientation == Orientation.landscape ? BorderRadius.only(topRight: Radius.circular(borderRadius)) : null,
+            ),
             padding: style?.paddingMonthHeader,
 //            height: _kDayPickerRowHeight,
             child: Center(
               child: ExcludeSemantics(
                 child: Text(
                   monthYearHeader,
+                  // 'Something',
                   style: style?.textStyleMonthYearHeader ??
                       themeData.textTheme.subhead.copyWith(
                         fontFamily: fontFamily,
@@ -425,14 +431,26 @@ class FlutterRoundedDayPicker extends StatelessWidget {
               ),
             ),
           ),
-          Flexible(
-            child: GridView.custom(
-              gridDelegate: _kDayPickerGridDelegate,
-              childrenDelegate: SliverChildListDelegate(
-                labels,
-                addRepaintBoundaries: false,
+          // Flexible(
+          //   child: GridView.custom(
+          //     gridDelegate: _kDayPickerGridDelegate,
+          //     childrenDelegate: SliverChildListDelegate(
+          //       labels,
+          //       addRepaintBoundaries: false,
+          //     ),
+          //     padding: EdgeInsets.zero,
+          //   ),
+          // ),
+          Expanded(
+            child: Center(
+              child: GridView.custom(
+                gridDelegate: _kDayPickerGridDelegate,
+                childrenDelegate: SliverChildListDelegate(
+                  labels,
+                  addRepaintBoundaries: false,
+                ),
+                padding: EdgeInsets.zero,
               ),
-              padding: EdgeInsets.zero,
             ),
           ),
         ],

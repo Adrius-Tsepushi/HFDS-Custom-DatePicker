@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class MaterialRoundedDatePickerStyle {
+  TextStyle selectDateText;
   TextStyle textStyleYearButton;
   TextStyle textStyleDayButton;
   TextStyle textStyleDayHeader;
@@ -24,11 +25,14 @@ class MaterialRoundedDatePickerStyle {
   Color backgroundPicker;
   Color backgroundActionBar;
   Color backgroundHeaderMonth;
+  Color submitButtonBackground;
   TextStyle textStyleButtonPositive;
   TextStyle textStyleButtonNegative;
   TextStyle textStyleButtonAction;
+  TextStyle textStyleButtonSubmit;
 
   MaterialRoundedDatePickerStyle({
+    this.selectDateText,
     this.textStyleYearButton,
     this.textStyleDayButton,
     this.textStyleDayHeader,
@@ -49,11 +53,13 @@ class MaterialRoundedDatePickerStyle {
     this.textStyleButtonNegative,
     this.textStyleButtonPositive,
     this.textStyleButtonAction,
+    this.textStyleButtonSubmit,
     this.decorationDateSelected,
     this.colorArrowNext,
     this.colorArrowPrevious,
     this.backgroundActionBar,
     this.backgroundPicker,
     this.backgroundHeaderMonth,
+    this.submitButtonBackground,
   });
 }

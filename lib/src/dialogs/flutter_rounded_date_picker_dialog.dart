@@ -228,6 +228,8 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
       borderRadius: widget.borderRadius,
       paddingActionBar: widget.styleDatePicker?.paddingActionBar,
       background: widget.styleDatePicker?.backgroundActionBar,
+      textStyleButtonSubmit: widget.styleDatePicker?.textStyleButtonSubmit,
+      submitButtonBackground: widget.styleDatePicker?.submitButtonBackground,
     );
 
     Color backgroundPicker = theme.dialogBackgroundColor;
@@ -240,20 +242,11 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
     final Dialog dialog = Dialog(
       child: OrientationBuilder(builder: (BuildContext context, Orientation orientation) {
         assert(orientation != null);
-        final Widget header = FlutterRoundedDatePickerHeader(
-            selectedDate: _selectedDate,
-            mode: _mode,
-            onModeChanged: _handleModeChanged,
-            orientation: orientation,
-            era: widget.era,
-            borderRadius: widget.borderRadius,
-            imageHeader: widget.imageHeader,
-            description: widget.description,
-            fontFamily: widget.fontFamily,
-            style: widget.styleDatePicker);
+        final Widget header = FlutterRoundedDatePickerHeader(selectedDate: _selectedDate, mode: _mode, onModeChanged: _handleModeChanged, orientation: orientation, era: widget.era, borderRadius: widget.borderRadius, imageHeader: widget.imageHeader, description: widget.description, fontFamily: widget.fontFamily, style: widget.styleDatePicker);
         switch (orientation) {
           case Orientation.portrait:
             return Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: backgroundPicker,
                 borderRadius: BorderRadius.circular(widget.borderRadius),
