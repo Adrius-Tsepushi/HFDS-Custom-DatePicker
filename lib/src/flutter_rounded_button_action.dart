@@ -46,10 +46,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
     );
 
     final Widget submitButton = GestureDetector(
-      onTap: () {
-        onTapButtonPositive;
-        // print('Submitting');
-      },
+      onTap: onTapButtonPositive,
       child: Container(
         child: Center(
           child: Text(
